@@ -7,27 +7,32 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.laptop.dawanda.main.GetCategoriesFragment"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:theme="@style/AppTheme">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="JSON Content ListView Place Holder" />
+        android:text="JSON Content ListView Place Holder"
+
+        />
 
     <ListView
         android:id="@+id/catList"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/getdata"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
-        android:text="Get Data"
-        android:layout_below="@id/catList"/>
+        android:layout_marginTop="100px"
+        />
+
+    <!--<Button-->
+        <!--android:id="@+id/getdata"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="23dp"-->
+        <!--android:text="Get Data"-->
+        <!--android:layout_below="@id/catList"/>-->
 
 
 </RelativeLayout>

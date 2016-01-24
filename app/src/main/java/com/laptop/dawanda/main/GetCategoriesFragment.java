@@ -1,5 +1,7 @@
 package com.laptop.dawanda.main;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -63,7 +65,7 @@ public class GetCategoriesFragment extends Fragment {
             final String CAT_NAME = "name";
             final String CAT_IMGURL = "image_url";
 
-            ArrayList<JSONObject> catArrayList = new ArrayList<>();
+            ArrayList<CategoryObject> catArrayList = new ArrayList<>();
 
             JSONObject categoriesJson = new JSONObject(categoriesJSON);
             JSONObject justCatData = categoriesJson.getJSONObject("data");
@@ -75,7 +77,18 @@ public class GetCategoriesFragment extends Fragment {
                 // Get the JSON object representing a single category in the list
                 JSONObject singleCategory = categoriesArray.getJSONObject(i);
                 //add the name and image_url component to the arraylist
-                catArrayList.add(singleCategory);
+
+                Bitmap catImageBitmap = null;
+                try {
+                    InputStream streamIn = new java.net.URL("http:" + singleCategory.getString("image_url")).openStream();
+                    System.out.println(streamIn);
+                    catImageBitmap = BitmapFactory.decodeStream(streamIn);
+                } catch (Exception e) {
+                    // Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+                }
+
+                catArrayList.add(new CategoryObject(singleCategory.getString(CAT_NAME), catImageBitmap));
             }
 
             return catArrayList;
@@ -149,7 +162,7 @@ public class GetCategoriesFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList arraylist) {
             super.onPostExecute(arraylist);
-          categoriesAdapter adapter = new categoriesAdapter(getActivity().getApplicationContext(), R.id.catList, arraylist);
+        categoriesAdapter adapter = new categoriesAdapter(getActivity().getApplicationContext(), R.id.catList, arraylist);
         ListView listView = (ListView) getActivity().findViewById(R.id.catList);
         listView.setAdapter(adapter);
 

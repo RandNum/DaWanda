@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
+    >
 
     <TextView
         android:id="@+id/nameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         />
 
     <!-- For now this is just the plain text URL Later this view will change
     to a rendered image from the URL-->
-    <TextView
-        android:id="@+id/imageURL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+    <!--<TextView-->
+        <!--android:id="@+id/imageURL"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--/>-->
+    <ImageView
+        android:id="@+id/catImage"
+        android:layout_width="200dip"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dip"
+        android:scaleType="center" />
 
 
 </LinearLayout>

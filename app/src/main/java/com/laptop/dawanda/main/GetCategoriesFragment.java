@@ -1,6 +1,5 @@
 package com.laptop.dawanda.main;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -23,8 +22,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -42,7 +39,7 @@ public class GetCategoriesFragment extends Fragment {
         FetchCategoriesTask categoriesTask = new FetchCategoriesTask();
         categoriesTask.execute();
 
-        View catView = inflater.inflate(R.layout.fragment_Get_Categories, container, false);
+        View catView = inflater.inflate(R.layout.fragment_get_categories, container, false);
 
         return catView;
     }
@@ -69,7 +66,9 @@ public class GetCategoriesFragment extends Fragment {
             ArrayList<JSONObject> catArrayList = new ArrayList<>();
 
             JSONObject categoriesJson = new JSONObject(categoriesJSON);
-            JSONArray categoriesArray = categoriesJson.getJSONArray(CAT_LIST);
+            JSONObject justCatData = categoriesJson.getJSONObject("data");
+            JSONArray categoriesArray = justCatData.getJSONArray(CAT_LIST);
+
 
             String[] resultStrs = new String[categoriesArray.length()];
             for(int i = 0; i < categoriesArray.length(); i++) {

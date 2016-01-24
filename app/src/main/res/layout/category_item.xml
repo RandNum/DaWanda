@@ -4,19 +4,15 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/vers"
+        android:id="@+id/nameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
+    <!-- For now this is just the plain text URL Later this view will change
+    to a rendered image from the URL-->
     <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <TextView
-        android:id="@+id/api"
+        android:id="@+id/imageURL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />

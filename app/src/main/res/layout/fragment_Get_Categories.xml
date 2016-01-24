@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.laptop.dawanda.main.MainActivityFragment"
+    tools:context="com.laptop.dawanda.main.GetCategoriesFragment"
     tools:showIn="@layout/activity_main">
 
     <TextView
@@ -15,7 +15,7 @@
         android:text="JSON Content ListView Place Holder" />
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/catList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
@@ -27,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="23dp"
         android:text="Get Data"
-        android:layout_below="@id/list"/>
-    
+        android:layout_below="@id/catList"/>
+
 
 </RelativeLayout>

@@ -24,15 +24,5 @@
         android:layout_marginTop="100px"
         />
 
-    <!--<Button-->
-        <!--android:id="@+id/getdata"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginBottom="23dp"-->
-        <!--android:text="Get Data"-->
-        <!--android:layout_below="@id/catList"/>-->
-
 
 </RelativeLayout>

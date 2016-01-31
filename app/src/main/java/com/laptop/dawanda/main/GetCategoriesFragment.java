@@ -1,14 +1,19 @@
 package com.laptop.dawanda.main;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.laptop.dawanda.R;
@@ -24,6 +29,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -46,8 +52,12 @@ public class GetCategoriesFragment extends Fragment {
         return catView;
     }
 
-    //was public class FetchCategorieTask extends AsyncTask<String, Void, String[]>
+
+
+
     public class FetchCategoriesTask extends AsyncTask<ArrayList, Void, ArrayList> {
+
+
 
         private final String LOG_TAG = FetchCategoriesTask.class.getSimpleName();
 
@@ -165,6 +175,28 @@ public class GetCategoriesFragment extends Fragment {
         categoriesAdapter adapter = new categoriesAdapter(getActivity().getApplicationContext(), R.id.catList, arraylist);
         ListView listView = (ListView) getActivity().findViewById(R.id.catList);
         listView.setAdapter(adapter);
+
+            //Now that adapter is set, add the onItemClick Listeners
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Fragment newFragment = new ProductsFragment();
+                    // consider using Java coding conventions (upper first char class names!!!)
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                    // Replace whatever is in the fragment_container view with this fragment,
+                    // and add the transaction to the back stack
+
+                    transaction.replace(R.id.categoriesfragment, newFragment);
+                    transaction.addToBackStack(null);
+
+
+                    // Commit the transaction
+                    transaction.commit();
+
+                }
+            });
 
         }
     }

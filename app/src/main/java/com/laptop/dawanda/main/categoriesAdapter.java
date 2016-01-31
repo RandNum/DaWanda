@@ -26,7 +26,6 @@ public class categoriesAdapter extends ArrayAdapter<CategoryObject>{
 
     private static class ViewHolder {
         TextView name;
-        TextView imgURL;
         ImageView imgView;
     }
 
@@ -38,7 +37,7 @@ public class categoriesAdapter extends ArrayAdapter<CategoryObject>{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-//        return super.getView(position, convertView, parent);
+        //super.getView(position, convertView, parent);
 
         // Get the data item for this position
         singleCatObject  = getItem(position);

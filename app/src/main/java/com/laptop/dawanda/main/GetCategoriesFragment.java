@@ -45,11 +45,13 @@ public class GetCategoriesFragment extends Fragment {
                              Bundle savedInstanceState) {
         //get the categories data on create view
         FetchCategoriesTask categoriesTask = new FetchCategoriesTask();
-        categoriesTask.execute();
+
 
         View catView = inflater.inflate(R.layout.fragment_get_categories, container, false);
 
+        categoriesTask.execute();
         return catView;
+
     }
 
 
@@ -94,7 +96,7 @@ public class GetCategoriesFragment extends Fragment {
                     System.out.println(streamIn);
                     catImageBitmap = BitmapFactory.decodeStream(streamIn);
                 } catch (Exception e) {
-                    // Log.e("Error", e.getMessage());
+                    Log.e("Error", e.getMessage());
                     e.printStackTrace();
                 }
 
@@ -173,7 +175,7 @@ public class GetCategoriesFragment extends Fragment {
         protected void onPostExecute(ArrayList arraylist) {
             super.onPostExecute(arraylist);
         categoriesAdapter adapter = new categoriesAdapter(getActivity().getApplicationContext(), R.id.catList, arraylist);
-        ListView listView = (ListView) getActivity().findViewById(R.id.catList);
+        final ListView listView = (ListView) getActivity().findViewById(R.id.catList);
         listView.setAdapter(adapter);
 
             //Now that adapter is set, add the onItemClick Listeners
@@ -188,13 +190,12 @@ public class GetCategoriesFragment extends Fragment {
                     // Replace whatever is in the fragment_container view with this fragment,
                     // and add the transaction to the back stack
 
-                    transaction.replace(R.id.categoriesfragment, newFragment);
+                    transaction.replace(R.id.fragment_container, newFragment);
                     transaction.addToBackStack(null);
 
 
                     // Commit the transaction
                     transaction.commit();
-
                 }
             });
 

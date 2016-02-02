@@ -23,7 +23,9 @@
     </android.support.design.widget.AppBarLayout>
 
     <!-- Where the fragment is attached -->
-    <include layout="@layout/content_get_categories" />
+    <!--<include layout="@layout/content_get_categories" />-->
+    <!-- Container to contain the other layouts that will be swapped in-->
+    <include layout="@layout/main_layout_container"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

@@ -171,13 +171,13 @@ public class ProductsFragment extends Fragment {
                 Bitmap catImageBitmap = null;
                 try {
                     JSONObject imageObjects = singleProduct.getJSONObject("default_image");
-                    String listviewObject = imageObjects.getString("listview");
-                    System.out.println(listviewObject);
-                    InputStream streamIn = new java.net.URL("http:" + listviewObject).openStream();
+                    String listviewString = imageObjects.getString("listview");
+                    System.out.println(listviewString);
+                    InputStream streamIn = new java.net.URL(("http:" + listviewString)).openStream();
                     System.out.println(streamIn);
                     catImageBitmap = BitmapFactory.decodeStream(streamIn);
                 } catch (Exception e) {
-                    // Log.e("Error", e.getMessage());
+                    Log.e("Error", e.getMessage());
                     e.printStackTrace();
                 }
 
@@ -199,7 +199,7 @@ public class ProductsFragment extends Fragment {
 
             try {
                 URL url = new URL("http://public.dawanda.in/products.json");
-                Log.v(LOG_TAG, "The json categories URL: " + url.toString());
+                Log.v(LOG_TAG, "The json products URL: " + url.toString());
                 // Create the request to DaWanda, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET"); //http get
@@ -262,7 +262,8 @@ public class ProductsFragment extends Fragment {
 //            listView.setAdapter(adapter);
 
             RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.productsrecyclerviewlist);
-            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), mColumnCount));
+            //recyclerView.setLayoutManager(new GridLayoutManager(getContext(), mColumnCount));
+            //recyclerView.setLayoutManager(new LinearLayoutManager(getContext());
             recyclerView.setAdapter(new ProductRecyclerViewAdapter(arraylist, mListener));
 
 
